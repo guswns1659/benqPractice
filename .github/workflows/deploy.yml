@@ -2,7 +2,6 @@ name: Angelhack
 env:
   PROJECT_NAME: angelhack
 
-
 on:
   push:
     branches: deploy
