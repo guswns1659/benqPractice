@@ -10,7 +10,7 @@ jobs:
   deploy:
     name: DEPLOY
     runs-on: ubuntu-18.04
-      env:
+    env:
       working-directory: ./BE
 
     steps:
@@ -38,7 +38,7 @@ jobs:
           echo $(pwd)
           chmod +x gradlew
         shell: bash
-         working-directory: ./BE
+        working-directory: ./BE
 
       - name: Build with Gradle
         run: |
@@ -69,4 +69,4 @@ jobs:
 
       - name: Code Deploy
         run: aws deploy create-deployment codedeploy-angelhack --application-name --deployment-config-name CodeDeployDefault.OneAtATime --deployment-group-name codedeploy-angelhack
-  --s3-location bucket=s3-angelhack,bundleType=zip,key=$PROJECT_NAME/$GITHUB_SHA.zip
+--s3-location bucket=s3-angelhack,bundleType=zip,key=$PROJECT_NAME/$GITHUB_SHA.zip
