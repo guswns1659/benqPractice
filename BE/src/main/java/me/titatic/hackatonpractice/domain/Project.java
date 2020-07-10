@@ -1,12 +1,19 @@
 package me.titatic.hackatonpractice.domain;
 
+import java.time.LocalDate;
 import java.util.HashSet;
 import java.util.Set;
 
+import javax.persistence.AttributeOverride;
+import javax.persistence.AttributeOverrides;
 import javax.persistence.CascadeType;
+import javax.persistence.CollectionTable;
+import javax.persistence.Column;
+import javax.persistence.ElementCollection;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
 
@@ -29,6 +36,17 @@ public class Project {
 
     private String name;
 
+    private LocalDate deadLine;
+
+    private String description;
+
+    @ElementCollection
+    @CollectionTable(name = "project_image", joinColumns = @JoinColumn(name = "project_id"))
+    @AttributeOverrides({
+        @AttributeOverride(name = "url", column = @Column(name = "project_image"))
+    })
+    private final Set<Image> images = new HashSet<>();
+
     @ManyToOne(cascade = CascadeType.ALL)
     private Corporation corporation;
 
@@ -46,5 +64,9 @@ public class Project {
             .build();
 
         this.projectAccounts.add(projectAccount);
+    }
+
+    public void addImage(Image image) {
+        this.images.add(image);
     }
 }

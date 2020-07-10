@@ -1,7 +1,10 @@
 package me.titatic.hackatonpractice.domain;
 
-import javax.persistence.Column;
+import java.util.Date;
+
 import javax.persistence.Embeddable;
+import javax.persistence.Temporal;
+import javax.persistence.TemporalType;
 
 import org.locationtech.jts.geom.Point;
 
@@ -20,6 +23,15 @@ public class Feed {
 
     private Integer likeCount;
 
-    @Column
+    private String image;
+
+    private String description;
+
     private Point point;
+
+    @Temporal(TemporalType.TIMESTAMP)
+    private Date createdAt;
+
+    @Temporal(TemporalType.TIMESTAMP)
+    private Date updatedAt;
 }

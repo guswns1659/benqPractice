@@ -2,8 +2,9 @@ package me.titatic.hackatonpractice.domain;
 
 import static org.assertj.core.api.Assertions.*;
 
+import java.time.LocalDate;
+
 import org.junit.jupiter.api.DisplayName;
-import org.junit.jupiter.api.Test;
 import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.CsvSource;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -51,21 +52,38 @@ public class ProjectRepositoryTest {
     }
 
     @DisplayName("유저와 프로젝트를 저장하는 테스트")
-    @CsvSource({"accountName1, projectName1"})
+    @CsvSource({"accountName1, 3, 3, www.naver.com, projectName1, 2020-08-10, description, corporationName"})
     @ParameterizedTest
-    void 유저와_프로젝트를_중간테이블로_저장한다(String accountName, String projectName1) {
+    void 유저와_프로젝트를_중간테이블로_저장한다(String accountName, Integer ecoPoint, Integer todayCount, String url,
+        String projectName1, String deadLine, String description, String corporationName) {
+
         Account account = Account.builder()
             .name(accountName)
+            .ecoPoint(ecoPoint)
+            .todayCount(todayCount)
+            .build();
+
+        Image image = Image.builder()
+            .url(url)
             .build();
 
         Project project1 = Project.builder()
             .name(projectName1)
+            .deadLine(LocalDate.parse(deadLine))
+            .description(description)
             .build();
 
+        project1.addImage(image);
+
+        Corporation corporation = Corporation.builder()
+            .name(corporationName)
+            .build();
+
+        corporation.addProject(project1);
         project1.addAccount(account);
         Project savedProject = projectRepository.save(project1);
 
         assertThat(savedProject.getProjectAccounts().size()).isEqualTo(1);
-        assertThat(savedProject.getProjectAccounts().iterator().next().getAccount().getName()).isEqualTo(accountName);
+        assertThat(savedProject.getProjectAccounts().iterator().next().getAccount().getEcoPoint()).isEqualTo(ecoPoint);
     }
 }

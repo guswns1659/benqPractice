@@ -2,6 +2,8 @@ package me.titatic.hackatonpractice.domain;
 
 import static org.assertj.core.api.Assertions.*;
 
+import java.util.Date;
+
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.CsvSource;
@@ -35,6 +37,8 @@ public class AccountRepositoryTest {
         Feed feed = Feed.builder()
             .likeCount(likeCount)
             .point(point)
+            .createdAt(new Date())
+            .updatedAt(new Date())
             .build();
 
         account.addFeed(feed);

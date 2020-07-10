@@ -4,6 +4,8 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
 
+import org.locationtech.jts.geom.Point;
+
 import lombok.AccessLevel;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
@@ -22,4 +24,8 @@ public class Restaurant {
     private Long id;
 
     private String name;
+
+    private String description;
+
+    private Point point;
 }

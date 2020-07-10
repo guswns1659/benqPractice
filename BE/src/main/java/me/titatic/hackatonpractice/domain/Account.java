@@ -33,6 +33,10 @@ public class Account {
 
     private String name;
 
+    private Integer todayCount;
+
+    private Integer ecoPoint;
+
     @OneToMany(mappedBy = "account")
     private final Set<ProjectAccount> projectAccounts = new HashSet<>();
 
