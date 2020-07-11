@@ -74,18 +74,17 @@ public class RestaurantRepositoryTest {
 
         // native query 활용
         Query query = entityManager.createNativeQuery("" +
-            "SELECT r.id \n" +
+            "SELECT r.id, r.name, r.description, r.point \n" +
             "FROM restaurant AS r \n" +
             "WHERE MBRContains(ST_LINESTRINGFROMTEXT(" + String.format("'LINESTRING(%f %f, %f %f)')", x1, y1, x2, y2) + ", r.point)"
-        );
+        , Restaurant.class);
 
         // query.setParameter(1, baseLongitude);
         // query.setParameter(2, baseLatitude);
         // query.setParameter(3, distance * 1000);
 
-        List<?> result = query.getResultList();
-        assertThat(result.size()).isEqualTo(1);
-        assertThat(result.get(0)).isEqualTo(BigInteger.valueOf(5));
-        // assertThat(result.get(1)).isEqualTo(BigInteger.valueOf(5));
+        List<Restaurant> result = query.getResultList();
+        assertThat(result.size()).isEqualTo(2);
+        assertThat(result.get(0).getId()).isEqualTo(BigInteger.valueOf(5));
     }
 }
