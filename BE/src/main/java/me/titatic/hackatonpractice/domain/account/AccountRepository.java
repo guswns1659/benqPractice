@@ -1,4 +1,4 @@
-package me.titatic.hackatonpractice.domain;
+package me.titatic.hackatonpractice.domain.account;
 
 import org.springframework.data.jpa.repository.JpaRepository;
 

@@ -13,6 +13,12 @@ import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.boot.web.server.LocalServerPort;
 import org.springframework.test.web.reactive.server.WebTestClient;
 
+import me.titatic.hackatonpractice.domain.account.Account;
+import me.titatic.hackatonpractice.domain.account.Image;
+import me.titatic.hackatonpractice.domain.corporation.Corporation;
+import me.titatic.hackatonpractice.domain.project.Project;
+import me.titatic.hackatonpractice.domain.project.ProjectRepository;
+
 @SpringBootTest(webEnvironment = SpringBootTest.WebEnvironment.RANDOM_PORT)
 @AutoConfigureWebTestClient(timeout = "30000")
 public class ProjectRepositoryTest {

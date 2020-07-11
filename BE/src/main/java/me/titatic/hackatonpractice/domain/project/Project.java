@@ -1,4 +1,4 @@
-package me.titatic.hackatonpractice.domain;
+package me.titatic.hackatonpractice.domain.project;
 
 import java.time.LocalDate;
 import java.util.HashSet;
@@ -22,6 +22,9 @@ import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
+import me.titatic.hackatonpractice.domain.account.Account;
+import me.titatic.hackatonpractice.domain.account.Image;
+import me.titatic.hackatonpractice.domain.corporation.Corporation;
 
 @Entity
 @Getter

@@ -19,6 +19,8 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.autoconfigure.web.reactive.AutoConfigureWebTestClient;
 import org.springframework.boot.test.context.SpringBootTest;
 
+import me.titatic.hackatonpractice.domain.restaurant.Restaurant;
+import me.titatic.hackatonpractice.domain.restaurant.RestaurantRepository;
 import me.titatic.hackatonpractice.utils.CardinalDirection;
 import me.titatic.hackatonpractice.utils.GeometryUtils;
 import me.titatic.hackatonpractice.utils.Location;
