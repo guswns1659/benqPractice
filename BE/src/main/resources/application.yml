@@ -1,7 +1,7 @@
 spring:
   profiles:
     active: local
-#    include: dev
+    include: aws
 
 # logging 설정
 logging:
@@ -64,15 +64,12 @@ spring:
 #      ddl-auto: update
 #    database: mysql
 #    database-platform: org.hibernate.spatial.dialect.mysql.MySQL56InnoDBSpatialDialect
-#---
-#cloud:
-#  aws:
-#    credentials:
-#      accessKey: 액세스
-#      secretKey: 시크릿 키
-#    s3:
-#      bucket: issue-bucket
-#    region:
-#      static: ap-northeast-2
-#    stack:
-#      auto: false
+---
+cloud:
+  aws:
+    s3:
+      bucket: s3-angelhack
+    region:
+      static: ap-northeast-2
+    stack:
+      auto: false
