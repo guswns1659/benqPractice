@@ -1,6 +1,7 @@
 package me.titatic.hackatonpractice.utils;
 
 import java.io.File;
+import java.io.FileOutputStream;
 import java.io.IOException;
 import java.util.Optional;
 
@@ -52,20 +53,13 @@ public class S3Uploader {
     }
 
     private Optional<File> convert(MultipartFile multipartFile) throws IOException {
-        File convertFile = new File(multipartFile.getOriginalFilename());
-        try {
-            multipartFile.transferTo(convertFile);
+        File convertFile = new File(multipartFile.getOriginalFilename() + " new");
+        if(convertFile.createNewFile()) {
+            try (FileOutputStream fos = new FileOutputStream(convertFile)) {
+                fos.write(multipartFile.getBytes());
+            }
             return Optional.of(convertFile);
-        } catch (Exception e) {
-            return Optional.empty();
         }
-        // if(convertFile.createNewFile()) {
-        //     try (FileOutputStream fos = new FileOutputStream(convertFile)) {
-        //         fos.write(multipartFile.getBytes());
-        //     }
-        //     return Optional.of(convertFile);
-        // }
-        //
-        // return Optional.empty();
+        return Optional.empty();
     }
 }

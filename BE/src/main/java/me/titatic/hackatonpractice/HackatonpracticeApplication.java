@@ -16,5 +16,4 @@ public class HackatonpracticeApplication {
             .properties(APPLICATION_LOCATIONS)
             .run(args);
     }
-
 }
