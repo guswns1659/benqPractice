@@ -1,6 +1,6 @@
 spring:
   profiles:
-    active: local
+    active: dev
     include: aws
 
 # logging 설정
@@ -18,37 +18,3 @@ logging:
     console: "%d{dd-MM-yyyy HH:mm:ss.SSS,Asia/Seoul} %magenta([%thread]) %highlight(%-5level) %logger.%M - %msg%n"
   file:
     name: logs/dev_log.log
----
-
-#spring:
-#  profiles: dev
-#  datasource:
-#    driverClassName: com.mysql.cj.jdbc.Driver
-#    url: jdbc:mysql://rds-anglehack.cutixbfyzqqm.ap-northeast-2.rds.amazonaws.com:3306/anglehack?serverTimezone=Asia/Seoul&characterEncoding=UTF-8&useLegacyDatetimeCode=false
-#    username: teamrocket
-#    password: teamrocket
-##    initialization-mode: always
-#    hikari:
-#      maximum-pool-size: 10
-#  jpa:
-#    properties:
-#      hibernate:
-#        format_sql: true
-#        jdbc:
-#        lob:
-#        non_contextual_creation: true
-#    hibernate:
-#      use-new-id-generator-mappings: false
-#      ddl-auto: update
-#    database: mysql
-#    database-platform: org.hibernate.spatial.dialect.mysql.MySQL56InnoDBSpatialDialect
-#---
-#cloud:
-#  aws:
-#    s3:
-#      bucket: s3-angelhack
-#    region:
-#      static: ap-northeast-2
-#    stack:
-#      auto: false
-
