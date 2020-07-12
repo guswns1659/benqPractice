@@ -20,14 +20,15 @@ spring:
       ddl-auto: update
     database: mysql
     database-platform: org.hibernate.spatial.dialect.mysql.MySQL56InnoDBSpatialDialect
+  servlet:
+    multipart:
+      max-file-size: 10MB
+      max-request-size: 10MB
 ---
 cloud:
   aws:
-    credentials:
-      accessKey: 액세스
-      secretKey: 시크릿 키
     s3:
-      bucket: issue-bucket
+      bucket: s3-angelhack
     region:
       static: ap-northeast-2
     stack:
