@@ -14,7 +14,7 @@ import org.springframework.boot.web.server.LocalServerPort;
 import org.springframework.test.web.reactive.server.WebTestClient;
 
 import me.titatic.hackatonpractice.domain.account.Account;
-import me.titatic.hackatonpractice.domain.account.Image;
+import me.titatic.hackatonpractice.domain.restaurant.Image;
 import me.titatic.hackatonpractice.domain.corporation.Corporation;
 import me.titatic.hackatonpractice.domain.project.Project;
 import me.titatic.hackatonpractice.domain.project.ProjectRepository;

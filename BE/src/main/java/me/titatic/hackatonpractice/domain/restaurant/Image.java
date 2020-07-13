@@ -1,4 +1,4 @@
-package me.titatic.hackatonpractice.domain.account;
+package me.titatic.hackatonpractice.domain.restaurant;
 
 import javax.persistence.Embeddable;
 

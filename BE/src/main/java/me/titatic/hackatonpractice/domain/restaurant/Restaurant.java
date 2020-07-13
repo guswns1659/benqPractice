@@ -20,7 +20,6 @@ import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
-import me.titatic.hackatonpractice.domain.account.Image;
 
 @Entity
 @Getter

@@ -23,7 +23,7 @@ import lombok.Builder;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import me.titatic.hackatonpractice.domain.account.Account;
-import me.titatic.hackatonpractice.domain.account.Image;
+import me.titatic.hackatonpractice.domain.restaurant.Image;
 import me.titatic.hackatonpractice.domain.corporation.Corporation;
 
 @Entity
