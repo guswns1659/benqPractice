@@ -1,6 +1,5 @@
 package me.titatic.hackatonpractice.domain.account;
 
-import java.time.LocalDate;
 import java.util.Date;
 
 import javax.persistence.Embeddable;
@@ -30,5 +29,5 @@ public class PointHistory {
     private Integer ecoPoint;
 
     @Enumerated(EnumType.STRING)
-    private Option pointOption;
+    private pointOption pointOption;
 }

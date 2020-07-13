@@ -17,7 +17,7 @@ import org.springframework.boot.test.context.SpringBootTest;
 import me.titatic.hackatonpractice.domain.account.Account;
 import me.titatic.hackatonpractice.domain.account.AccountRepository;
 import me.titatic.hackatonpractice.domain.account.Challenge;
-import me.titatic.hackatonpractice.domain.account.Option;
+import me.titatic.hackatonpractice.domain.account.pointOption;
 import me.titatic.hackatonpractice.domain.account.PointHistory;
 
 @SpringBootTest(webEnvironment = SpringBootTest.WebEnvironment.RANDOM_PORT)
@@ -55,7 +55,7 @@ public class AccountRepositoryTest {
             .ecoPoint(ecoPoint)
             .projectName(projectName)
             .createdAt(new Date())
-            .pointOption(Option.SAVE)
+            .pointOption(pointOption.SAVE)
             .build();
 
         account.addPointHistory(pointHistory);
@@ -66,6 +66,6 @@ public class AccountRepositoryTest {
         assertThat(account.getChallenges().iterator().next().getPoint().getX()).isEqualTo(longitude);
         assertThat(account.getChallenges().iterator().next().getRestaurantName()).isEqualTo(restaurantName);
         assertThat(account.getPointHistories().iterator().next().getEcoPoint()).isEqualTo(ecoPoint);
-        assertThat(account.getPointHistories().iterator().next().getPointOption().getOption()).isEqualTo(Option.SAVE.getOption());
+        assertThat(account.getPointHistories().iterator().next().getPointOption().getOption()).isEqualTo(pointOption.SAVE.getOption());
     }
 }
