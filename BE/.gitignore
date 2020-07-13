@@ -144,4 +144,5 @@ gradle-app.setting
 
 # End of https://www.toptal.com/developers/gitignore/api/intellij,java,gradle
 logs
+src/main/resources/application-aws.yml
 
