@@ -1,12 +1,13 @@
 package me.titatic.hackatonpractice.domain.account;
 
+import java.time.LocalDate;
 import java.util.Date;
 
 import javax.persistence.Embeddable;
+import javax.persistence.EnumType;
+import javax.persistence.Enumerated;
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
-
-import org.locationtech.jts.geom.Point;
 
 import lombok.AccessLevel;
 import lombok.AllArgsConstructor;
@@ -19,19 +20,15 @@ import lombok.NoArgsConstructor;
 @NoArgsConstructor
 @AllArgsConstructor(access = AccessLevel.PRIVATE)
 @Builder
-public class Feed {
+public class PointHistory {
 
-    private Integer likeCount;
-
-    private String image;
-
-    private String description;
-
-    private Point point;
-
-    @Temporal(TemporalType.TIMESTAMP)
+    @Temporal(TemporalType.DATE)
     private Date createdAt;
 
-    @Temporal(TemporalType.TIMESTAMP)
-    private Date updatedAt;
+    private String projectName;
+
+    private Integer ecoPoint;
+
+    @Enumerated(EnumType.STRING)
+    private Option pointOption;
 }

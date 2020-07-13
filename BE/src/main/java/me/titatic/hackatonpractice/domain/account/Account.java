@@ -46,9 +46,17 @@ public class Account {
     @AttributeOverrides({
         @AttributeOverride(name = "likeCount", column = @Column(name = "feed_likeCount"))
     })
-    private final Set<Feed> feeds = new HashSet<>();
+    private final Set<Challenge> challenges = new HashSet<>();
 
-    public void addFeed(Feed feed) {
-        this.getFeeds().add(feed);
+    @ElementCollection
+    @CollectionTable(name = "account_point_history", joinColumns = @JoinColumn(name = "account_id"))
+    private final Set<PointHistory> pointHistories = new HashSet<>();
+
+    public void addChallenge(Challenge challenge) {
+        this.getChallenges().add(challenge);
+    }
+
+    public void addPointHistory(PointHistory pointHistory) {
+        this.getPointHistories().add(pointHistory);
     }
 }
