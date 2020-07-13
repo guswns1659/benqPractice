@@ -42,9 +42,9 @@ public class Account {
     private final Set<ProjectAccount> projectAccounts = new HashSet<>();
 
     @ElementCollection
-    @CollectionTable(name = "account_feed", joinColumns = @JoinColumn(name = "account_id"))
+    @CollectionTable(name = "account_challenge", joinColumns = @JoinColumn(name = "account_id"))
     @AttributeOverrides({
-        @AttributeOverride(name = "likeCount", column = @Column(name = "feed_likeCount"))
+        @AttributeOverride(name = "likeCount", column = @Column(name = "challenge_likeCount"))
     })
     private final Set<Challenge> challenges = new HashSet<>();
 

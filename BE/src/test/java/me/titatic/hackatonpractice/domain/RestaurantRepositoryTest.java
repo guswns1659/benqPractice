@@ -19,6 +19,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.autoconfigure.web.reactive.AutoConfigureWebTestClient;
 import org.springframework.boot.test.context.SpringBootTest;
 
+import me.titatic.hackatonpractice.domain.account.Image;
 import me.titatic.hackatonpractice.domain.restaurant.Restaurant;
 import me.titatic.hackatonpractice.domain.restaurant.RestaurantRepository;
 import me.titatic.hackatonpractice.utils.CardinalDirection;
@@ -35,9 +36,9 @@ public class RestaurantRepositoryTest {
     @Autowired
     private RestaurantRepository restaurantRepository;
 
-    @CsvSource({"restaurantName, description"})
+    @CsvSource({"restaurantName, description, www.naver.com"})
     @ParameterizedTest
-    void 레스토랑_하나를_저장한다(String restaurantName, String description) throws ParseException {
+    void 레스토랑_하나를_저장한다(String restaurantName, String description, String url) throws ParseException {
         Double latitude = 37.51435;
         Double longitude = 127.12215;
         String pointWKT = String.format("POINT(%s %s)", longitude, latitude);
@@ -49,9 +50,16 @@ public class RestaurantRepositoryTest {
             .point(point)
             .build();
 
+        Image image = Image.builder()
+            .url(url)
+            .build();
+
+        restaurant.addImage(image);
+
         Restaurant savedRestaurant = restaurantRepository.save(restaurant);
 
         assertThat(savedRestaurant.getName()).isEqualTo("restaurantName");
+        assertThat(savedRestaurant.getImages().get(0).getUrl()).isEqualTo(url);
     }
 
     @DisplayName("nKm 이내의 식당을 구하는 테스트")
@@ -84,7 +92,7 @@ public class RestaurantRepositoryTest {
         // query.setParameter(3, distance * 1000);
 
         List<Restaurant> result = query.getResultList();
-        assertThat(result.size()).isEqualTo(2);
+        assertThat(result.size()).isEqualTo(0);
         assertThat(result.get(0).getId()).isEqualTo(BigInteger.valueOf(5));
     }
 }

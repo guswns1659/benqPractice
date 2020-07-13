@@ -2,6 +2,7 @@ package me.titatic.hackatonpractice.domain.account;
 
 import java.util.Date;
 
+import javax.persistence.Column;
 import javax.persistence.Embeddable;
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
@@ -23,9 +24,12 @@ public class Challenge {
 
     private Integer likeCount;
 
-    private String image;
+    private String url;
 
     private String description;
+
+    @Column(name = "challenge_restaurant_name")
+    private String restaurantName;
 
     private Point point;
 

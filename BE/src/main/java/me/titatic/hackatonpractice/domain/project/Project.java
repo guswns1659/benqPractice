@@ -43,6 +43,12 @@ public class Project {
 
     private String description;
 
+    private Integer targetMoney;
+
+    private Integer currentMoney;
+
+    private Integer donators;
+
     @ElementCollection
     @CollectionTable(name = "project_image", joinColumns = @JoinColumn(name = "project_id"))
     @AttributeOverrides({

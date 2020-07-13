@@ -2,7 +2,6 @@ package me.titatic.hackatonpractice.domain;
 
 import static org.assertj.core.api.Assertions.*;
 
-import java.time.LocalDate;
 import java.util.Date;
 
 import org.junit.jupiter.api.DisplayName;
@@ -29,10 +28,10 @@ public class AccountRepositoryTest {
     private AccountRepository accountRepository;
 
     @DisplayName("사용자와 위치정보를 가진 피드를 저장하는 테스트")
-    @CsvSource({"accountName, 3, 4, 2, projectName"})
+    @CsvSource({"accountName, 3, 4, 2, restaurantName, projectName"})
     @ParameterizedTest
     void 유저와_피드를_저장한다(String accountName, Integer todayCount, Integer ecoPoint, Integer likeCount,
-        String projectName) throws ParseException {
+        String restaurantName, String projectName) throws ParseException {
         Account account = Account.builder()
             .name(accountName)
             .todayCount(todayCount)
@@ -47,6 +46,7 @@ public class AccountRepositoryTest {
         Challenge challenge = Challenge.builder()
             .likeCount(likeCount)
             .point(point)
+            .restaurantName(restaurantName)
             .createdAt(new Date())
             .updatedAt(new Date())
             .build();
@@ -64,6 +64,7 @@ public class AccountRepositoryTest {
 
         assertThat(account.getChallenges().iterator().next().getLikeCount()).isEqualTo(likeCount);
         assertThat(account.getChallenges().iterator().next().getPoint().getX()).isEqualTo(longitude);
+        assertThat(account.getChallenges().iterator().next().getRestaurantName()).isEqualTo(restaurantName);
         assertThat(account.getPointHistories().iterator().next().getEcoPoint()).isEqualTo(ecoPoint);
         assertThat(account.getPointHistories().iterator().next().getPointOption().getOption()).isEqualTo(Option.SAVE.getOption());
     }

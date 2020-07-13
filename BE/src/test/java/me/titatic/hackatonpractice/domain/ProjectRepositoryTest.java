@@ -33,19 +33,30 @@ public class ProjectRepositoryTest {
     private int port;
 
     @DisplayName("기업과 프로젝트를 저장하는 테스트")
-    @CsvSource({"corporation, project1, project2"})
+    @CsvSource({"corporation, project1, 100000, description, 55555, 2020-07-13, 100, project2"})
     @ParameterizedTest
-    void 프로젝트저장소로_프로젝트와_기업을_저장한다(String corporationName, String projectName1, String projectName2) {
+    void 프로젝트저장소로_프로젝트와_기업을_저장한다(String corporationName, String projectName1, Integer currentMoney,
+        String description, Integer targetMoney, String deadLine, Integer donators, String projectName2) {
         Corporation corporation = Corporation.builder()
             .name(corporationName)
             .build();
 
         Project project1 = Project.builder()
             .name(projectName1)
+            .currentMoney(currentMoney)
+            .description(description)
+            .targetMoney(targetMoney)
+            .deadLine(LocalDate.parse(deadLine))
+            .donators(donators)
             .build();
 
         Project project2 = Project.builder()
             .name(projectName2)
+            .currentMoney(currentMoney)
+            .description(description)
+            .targetMoney(targetMoney)
+            .deadLine(LocalDate.parse(deadLine))
+            .donators(donators)
             .build();
 
         corporation.addProject(project1);
@@ -55,6 +66,7 @@ public class ProjectRepositoryTest {
 
         assertThat(savedProject1.getCorporation().getName()).isEqualTo(corporationName);
         assertThat(savedProject2.getCorporation().getName()).isEqualTo(corporationName);
+        assertThat(savedProject1.getCurrentMoney()).isEqualTo(currentMoney);
     }
 
     @DisplayName("유저와 프로젝트를 저장하는 테스트")
